@@ -1,24 +1,36 @@
-import React from 'react'
-import Announcement from '../components/Announcement'
-import Categories from '../components/Categories'
-import Footer from '../components/Footer'
-import Navbar from '../components/Navbar'
-import Newsletter from '../components/Newsletter'
-import Products from '../components/Products'
-import Slider from '../components/Slider'
+import React,{useEffect,useState} from "react";
+// import { Products } from "../products";
+import { Col, Row } from "react-bootstrap";
+import Product from "./Product";
+import axios from 'axios';
 
 const Home = () => {
-    return (
-        <div className='container'>
-            <Announcement/>
-            <Navbar/>
-            <Slider/>
-            <Categories/>
-            <Products/>
-            <Newsletter/>
-            <Footer/>
-        </div>
-    )
-}
+  const [Products, setProducts] = useState([])
+  useEffect(() => {
+    const fetchProducts = async ()=>{
+    try{
+      const res = await axios.get('/api/products')
+      console.log(res.data);
+      setProducts(res.data);
+    }
+    catch (err) {
+      console.error(err);
+    }
+  }
+    fetchProducts()
+  },[])
+  console.log(Products)
+  return (
+    <>
+      <Row>
+        {Products.map((product) => (
+          <Col key={product._id} md={3}>
+            <Product product={product} />
+          </Col>
+        ))}
+      </Row>
+    </>
+  );
+};
 
-export default Home
+export default Home;
