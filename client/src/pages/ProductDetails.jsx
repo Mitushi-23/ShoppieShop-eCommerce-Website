@@ -1,9 +1,10 @@
-import React,{useState, useEffect} from "react";
-// import { Products } from "../products";
-import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { detailsProducts } from "../actions/productActions";
 import {
   Button,
   Col,
+  Form,
   Image,
   ListGroup,
   ListGroupItem,
@@ -11,73 +12,117 @@ import {
 } from "react-bootstrap";
 import Rating from "../components/Rating";
 import { Link } from "react-router-dom";
+import Loader from "../components/shared/Loader";
+import Message from "../components/shared/Message";
 
-const ProductDetails = ({ match }) => {
-  // const product = Products.find((p) => p._id === match.params.id);
-  // console.log(match.params.id);
-  const [product, setProduct] = useState([]);
+const ProductDetails = ({ match, history }) => {
+  const [qty, setQty] = useState(1);
+  const dispatch = useDispatch();
+
+  const productDetails = useSelector((state) => state.productDetails);
+  const { loading, error, product } = productDetails;
+
   useEffect(() => {
-    const fetchProduct = async ()=>{
-    try{
-      const {data} = await axios.get(`/api/products/${match.params.id}`)
-      setProduct(data);
-    }
-    catch (err) {
-      console.error(err);
-    }
+    dispatch(detailsProducts(match.params.id));
+  }, [match, dispatch]);
+  
+ const addToCartHandler=()=>{
+      history.push(`/cart/${match.params.id}?qty=${qty}`)
   }
-    fetchProduct()
-  },[])
-  return (
-    <div>
-        <Link to="/" style={{textDecoration:'none'}}><i class="fa-solid fa-arrow-left-long"></i> &nbsp;GO BACK</Link>
-      <Row style={{ margin: "10% 0%" }}>
-        <Col md={6}>
-          <Image src={product.image} alt={product.name} width={"400px"} fluid />
-        </Col>
-        <Col md={6} >
-          <ListGroupItem>
-            <h3>{product.name}</h3>
-            <hr />
-            Brand: {product.brand}
-          </ListGroupItem>
-          <ListGroupItem>
-            <Rating
-              value={product.rating}
-              text={`${product.numReviews} Reviews`}
-            />
-          </ListGroupItem>
-          <ListGroupItem>
-            <strong> Price :</strong> &nbsp;{" "}
-            <i className="fa-solid fa-indian-rupee-sign"></i>&nbsp;
-            {product.price}
-          </ListGroupItem>
-          <ListGroupItem>{product.description}</ListGroupItem>
 
-          <br />
-          <Col md={6} style={{marginLeft:'2rem'}}>
-          <ListGroup>
-            <ListGroupItem>
-              <Row>
-                <Col>Status:</Col>
-                <Col>
-                  {product.countInStock > 0 ? "In Stock" : "Out of Stock"}
-                </Col>
+  return (
+    <>
+      {loading ? (
+        <Loader />
+      ) : error ? (
+        <Message variant="danger">{error}</Message>
+      ) : (
+        <div>
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <i class="fa-solid fa-arrow-left-long"></i> &nbsp;GO BACK
+          </Link>
+          <Row style={{ margin: "10% 0%" }}>
+            <Col md={6}>
+              <Image
+                src={product.image}
+                alt={product.name}
+                width={"400px"}
+                fluid
+              />
+            </Col>
+            <Col md={6}>
+              <ListGroupItem>
+                <h3>{product.name}</h3>
                 <hr />
-                <Button
-                  className="btn-lg  btn-dark"
-                  style={{ borderRadius: "0" }}
-                  type="button"
-                >
-                  Add to Cart
-                </Button>
-              </Row>
-            </ListGroupItem>
-          </ListGroup>
-          </Col>
-        </Col>
-      </Row>
-    </div>
+                Brand: {product.brand}
+              </ListGroupItem>
+              <ListGroupItem>
+                <Rating
+                  value={product.rating}
+                  text={`${product.numReviews} Reviews`}
+                />
+              </ListGroupItem>
+              <ListGroupItem>
+                <strong> Price :</strong> &nbsp;{" "}
+                <i className="fa-solid fa-indian-rupee-sign"></i>&nbsp;
+                {product.price}
+              </ListGroupItem>
+              <ListGroupItem>{product.description}</ListGroupItem>
+
+              <br />
+              <Col md={6} style={{ marginLeft: "2rem" }}>
+                <ListGroup>
+                  <ListGroupItem>
+                    <Row>
+                      <Col>Status:</Col>
+                      <Col>
+                        {product.countInStock > 0 ? "In Stock" : "Out of Stock"}
+                      </Col>
+                      {product.countInStock > 0 && (
+                        <ListGroupItem>
+                          <Row>
+                            <Col>
+                              {" "}
+                              Qty
+                              <Form.Control
+                                as="select"
+                                value={qty}
+                                onChange={(e) => setQty(e.target.value)}
+                              >
+                                {[...Array(product.countInStock).keys()].map(
+                                  (x) => (
+                                    <option
+                                      key={x + 1}
+                                      value={x + 1}
+                                      style={{ color: "black" }}
+                                    >
+                                      {x + 1}
+                                    </option>
+                                  )
+                                )}
+                              </Form.Control>
+                            </Col>
+                          </Row>
+                        </ListGroupItem>
+                      )}
+                      <hr />
+                      <Button
+                        className="btn-lg  btn-dark"
+                        style={{ borderRadius: "0" }}
+                        type="button"
+                        onClick={addToCartHandler}
+                      >
+                        Add to Cart
+                      </Button>
+                    </Row>
+                  </ListGroupItem>
+                </ListGroup>
+              </Col>
+            </Col>
+          </Row>
+        </div>
+      )}
+    </>
   );
 };
 
