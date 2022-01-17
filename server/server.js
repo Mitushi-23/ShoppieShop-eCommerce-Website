@@ -4,12 +4,15 @@ const dotenv = require('dotenv');
 const Products = require('./data/products')
 const connectDb = require('./config/config');
 const productRoutes = require('./routes/productsRoute');
+const userRoutes = require('./routes/usersRoute');
 
 dotenv.config();
 connectDb();
 const app = express()
+app.use(express.json()); 
 
 app.use("/api", productRoutes);
+app.use("/api/users", userRoutes);
 app.use(errorHandler)
 
 const PORT = 8080;
