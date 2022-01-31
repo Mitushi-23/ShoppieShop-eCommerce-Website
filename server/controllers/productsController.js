@@ -9,7 +9,7 @@ const getProducts = asyncHandler(async (req, res) => {
 const getProduct = asyncHandler(async (req, res) => {
   const product = await Product.findById(req.params.id)
   if (product) res.json(product)
-  else res.send(404).json({ message: 'Product not found' })
+  else res.status(404).send({message: 'Product not found' })
 })
 
 module.exports = {getProduct, getProducts};
