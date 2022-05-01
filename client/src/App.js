@@ -7,6 +7,8 @@ import Cart from './pages/Cart';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import ProductDetails from './pages/ProductDetails';
+import ProfileScreen from './pages/ProfileScreen';
+// import Profile from './pages/ProfileScreen';
 import Register from './pages/Register';
 
 const App = () => {
@@ -20,6 +22,7 @@ const App = () => {
        <Route path="/" component = {Home} exact/>
        <Route path="/products/:id" component = {ProductDetails} exact/>
        <Route path="/cart/:id?" component = {Cart} exact/>
+       <Route path="/profile" component = {ProfileScreen} exact/>
        <Route path="/login" component = {Login} exact/>
        <Route path="/register" component = {Register} exact/>
       </Container>
