@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Form, Row, Col, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { register } from "../actions/userAction";
@@ -13,9 +13,10 @@ const Register = ({location, history}) => {
   const [password, setPassword] = useState("");
   const [confirmpassword, setConfirmPassword] = useState("");
   const [message, setMessage] = useState("");
-
-  const redirect = location.search ? location.search.split("=")[1] : "/";
+const navigate = useNavigate();
+  // const redirect = location.search ? location.search.split("=")[1] : "/";
   // console.log(location.search.split("="));
+  const redirect="/"
 
   const dispatch = useDispatch();
   const userRegister = useSelector(state => state.userRegister);
@@ -24,7 +25,7 @@ const Register = ({location, history}) => {
   useEffect(()=>{
       if(userInfo)
       {
-          history.push(redirect);
+          navigate(redirect);
       }
   },[history, userInfo, redirect])
 
@@ -98,7 +99,7 @@ const Register = ({location, history}) => {
             <Col>
               Have an account ?{" "}
               <Link
-                to={redirect ? `login?redirect=${redirect}` : "/login"}
+                to={"/login"}
               >
                 Login
               </Link>

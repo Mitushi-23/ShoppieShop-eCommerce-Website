@@ -11,24 +11,40 @@ import {
   Row,
 } from "react-bootstrap";
 import Rating from "../components/Rating";
-import { Link } from "react-router-dom";
+import { generatePath, Link, useNavigate, useParams } from "react-router-dom";
 import Loader from "../components/shared/Loader";
 import Message from "../components/shared/Message";
 
-const ProductDetails = ({ match, history }) => {
+
+
+const ProductDetails = () => {
+  const params = useParams();
+  const navigate = useNavigate();
   const [qty, setQty] = useState(1);
   const dispatch = useDispatch();
-
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails;
 
   useEffect(() => {
-    dispatch(detailsProducts(match.params.id));
-  }, [match, dispatch]);
+    dispatch(detailsProducts(params.id));
+  }, [ dispatch]);
   
- const addToCartHandler=()=>{
-      history.push(`/cart/${match.params.id}?qty=${qty}`)
-  }
+  
+//  const addToCartHandler=()=>{
+//   const path = generatePath("/cart/:queryString/qty=:quantity",{
+
+//     queryString:params.id,
+//     quantity:qty
+//   })
+//       navigate(path)
+//       console.log("first")    
+//   }
+
+const addToCartHandler = () =>{
+    
+  navigate(`/cart/${params.id}?qty=${qty}`)
+}
+ 
 
   return (
     <>

@@ -16,7 +16,7 @@ const Home = () => {
     dispatch(listProducts());
   }, [dispatch]);
 
-  // console.log(products);
+  console.log(products);
   return (
     <>
       {loading ? (

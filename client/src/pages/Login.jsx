@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { Form, Row, Col, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../actions/userAction";
@@ -7,11 +7,16 @@ import Message from "../components/shared/Message";
 import Loader from "../components/shared/Loader";
 import FormContainer from "../components/shared/FormContainer";
 
-const Login = ({location, history}) => {
+const Login = ({ history}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const params = useParams();
+const navigate = useNavigate();
+const location = useLocation();
+console.log(params)
   const redirect = location.search ? location.search.split("=")[1] : "/";
+  console.log(redirect)
+  // const redirect ="/";
   // console.log(location.search.split("="));
 
   const dispatch = useDispatch();
@@ -21,9 +26,9 @@ const Login = ({location, history}) => {
   useEffect(()=>{
       if(userInfo)
       {
-          history.push(redirect);
+          navigate(redirect);
       }
-  },[history, userInfo, redirect])
+  },[navigate, userInfo, redirect])
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -69,7 +74,7 @@ const Login = ({location, history}) => {
             <Col>
               New Customer ?{" "}
               <Link
-                to={redirect ? `register?redirect=${redirect}` : "/register"}
+                to={'/register'}
               >
                 Register
               </Link>

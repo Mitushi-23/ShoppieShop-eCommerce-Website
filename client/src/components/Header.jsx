@@ -1,6 +1,6 @@
 import React from "react";
 import { Nav, Navbar, Container, NavDropdown } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../actions/userAction";
 // import {LinkContainer} from "react-router-bootstrap";
@@ -9,8 +9,10 @@ const Header = () => {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
   // console.log(userInfo);
+  const navigate=useNavigate()
   const dispatch = useDispatch();
   const logoutHandler = () => {
+    navigate("/login")
    dispatch(logout());
   };
   return (
@@ -31,7 +33,7 @@ const Header = () => {
               </Link>
               {userInfo ? (
                 <NavDropdown title={userInfo.name} id="username">
-                  <Link to="/profile" style={{ textDecoration: "none" }}>
+                  <Link to="/profile" style={{ textDecoration: "none" }} onClick={()=>(navigate("/profile"))}>
                     <NavDropdown.Item>Profile</NavDropdown.Item>
                   </Link>
                   <NavDropdown.Item onClick={logoutHandler}>

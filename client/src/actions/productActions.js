@@ -16,13 +16,14 @@ export const listProducts = () => async (dispatch) => {
       type: PRODUCT_LIST_SUCCESS,
       payload: data,
     })
+    console.log(data)
   } catch (error) {
     dispatch({
       type: PRODUCT_LIST_FAILS,
       payload:
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message,
+      error.response && error.response.data.message
+      ? error.response.data.message
+      : error.message,
     })
   }
 }

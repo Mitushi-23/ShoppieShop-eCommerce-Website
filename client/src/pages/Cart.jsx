@@ -9,15 +9,26 @@ import {
   Button,
 } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useParams,useLocation, useSearchParams} from "react-router-dom";
 import { addToCart , removeFromCart } from "../actions/cartActions";
 import Message from "../components/shared/Message";
 
-const Cart = ({ match, location, history }) => {
-  const productId = match.params.id;
-  const qty = location.search ? Number(location.search.split("=")[1]) : 1;
-  const dispatch = useDispatch();
 
+
+const Cart = () => {
+  let location = useLocation();
+  let params = useParams();
+  let navigate = useNavigate();
+  // const productId = params.id;
+  // console.log(params.qty.split('=')[1])
+  // const qty = params ? Number(params.qty.split('=')[1]) : 1;
+  const productId= location.pathname.split('/')[2]
+  const [searchParams] = useSearchParams();
+  const qty=searchParams.get('qty');
+  // console.log(qty)
+  const dispatch = useDispatch();
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
   useEffect(() => {
     if (productId) {
       dispatch(addToCart(productId, qty));
@@ -33,7 +44,13 @@ const Cart = ({ match, location, history }) => {
   };
 
   const checkOut=()=>{
-      history.push('/login?redirect=shipping');
+    if(!userInfo)
+    {
+      navigate('/login?redirect=shipping');
+
+    }
+      else
+      navigate('/shipping');
   }
 
   return (
