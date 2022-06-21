@@ -124,7 +124,7 @@ const Cart = () => {
             <ListGroup variant="flush">
               <ListGroupItem>
                 <h4>
-                  Total Products : {cartItems.reduce((acc, item) => acc + item.qty, 0)}
+                  Total Products : {cartItems.reduce((acc, item) => Number(acc) + Number(item.qty), 0)}
                 </h4>
                 Total Price:&nbsp;
                 <i className="fa-solid fa-indian-rupee-sign"></i>&nbsp;
