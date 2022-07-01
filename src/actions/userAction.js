@@ -1,4 +1,4 @@
-import axios from "axios";
+import axiosInstance from "../config";
 import {
   USER_DETAILS_FAIL,
   USER_DETAILS_REQUEST,
@@ -24,8 +24,8 @@ export const login = (email, password) => async (dispatch) => {
   try {
     dispatch({ type: USER_LOGIN_REQUEST });
     const config = { headers: { "Contnet-Type": "application/json" } };
-    const { data } = await axios.post(
-      "/api/users/login",
+    const { data } = await axiosInstance.post(
+      "/users/login",
       { email, password },
       config
     );
@@ -50,8 +50,8 @@ export const register = (name, email, password) => async (dispatch) => {
   try {
     dispatch({ type: USER_REGISTER_REQUEST });
     const config = { headers: { "Contnet-Type": "application/json" } };
-    const { data } = await axios.post(
-      "/api/users",
+    const { data } = await axiosInstance.post(
+      "/users",
       { name, email, password },
       config
     );
@@ -91,7 +91,7 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
         Authorization: `${userInfo.token}`,
       },
     };
-    const { data } = await axios.get(`/api/users/${id}`, config);
+    const { data } = await axiosInstance.get(`/users/${id}`, config);
     console.log(data);
 
     dispatch({
@@ -128,7 +128,7 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
         Authorization: `${userInfo.token}`,
       },
     };
-    const { data } = await axios.put("/api/users/profile", user,config);
+    const { data } = await axiosInstance.put("/users/profile", user,config);
     console.log(data);
 
     dispatch({

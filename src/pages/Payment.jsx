@@ -33,7 +33,7 @@ const Payment = () => {
               id="paypal"
               name="paymentMethod"
               value="paypal"
-             
+              checked
               onChange={(e) => setPaymentMethod(e.target.value)}
             ></Form.Check>
               </Col>
