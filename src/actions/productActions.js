@@ -1,4 +1,4 @@
-import axiosInstance from "../config";
+import axios from 'axios'
 import {
   PRODUCT_LIST_FAILS,
   PRODUCT_LIST_REQUEST,
@@ -11,7 +11,7 @@ import {
 export const listProducts = () => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_LIST_REQUEST })
-    const { data } = await axiosInstance.get('/products')
+    const { data } = await axios.get('/api/products')
     dispatch({
       type: PRODUCT_LIST_SUCCESS,
       payload: data,
@@ -31,7 +31,7 @@ export const listProducts = () => async (dispatch) => {
 export const detailsProducts = (id) => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_DETAILS_REQUEST })
-    const { data } = await axiosInstance.get(`/products/${id}`)
+    const { data } = await axios.get(`/api/products/${id}`)
     // console.log(data)
     dispatch({
       type: PRODUCT_DETAILS_SUCCESS,

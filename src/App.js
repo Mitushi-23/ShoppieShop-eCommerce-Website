@@ -7,6 +7,7 @@ import Cart from './pages/Cart';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Payment from './pages/Payment';
+import PlaceOrder from './pages/PlaceOrder';
 import ProductDetails from './pages/ProductDetails';
 import ProfileScreen from './pages/ProfileScreen';
 // import Profile from './pages/ProfileScreen';
@@ -32,6 +33,7 @@ const App = () => {
        <Route path="/register" element= {<Register/>} exact/>
        <Route path="/shipping" element= {<ShippingSreen/>} exact/>
        <Route path="/payment" element= {<Payment/>} exact/>
+       <Route path="/placeorder" element= {<PlaceOrder/>} exact/>
        </Routes>
       </Container>
       </main>
