@@ -5,6 +5,7 @@ const Products = require('./data/products')
 const connectDb = require('./config/config');
 const productRoutes = require('./routes/productsRoute');
 const userRoutes = require('./routes/usersRoute');
+const orderRoute = require('./routes/orderRoute')
 
 dotenv.config();
 connectDb();
@@ -13,6 +14,7 @@ app.use(express.json());
 
 app.use("/api", productRoutes);
 app.use("/api/users", userRoutes);
+app.use("/api/orders", orderRoute);
 app.use(errorHandler)
 
 const PORT = 8080;
