@@ -3,12 +3,10 @@ import { Nav, Navbar, Container, NavDropdown } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../actions/userAction";
-// import {LinkContainer} from "react-router-bootstrap";
 
 const Header = () => {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
-  // console.log(userInfo);
   const navigate=useNavigate()
   const dispatch = useDispatch();
   const logoutHandler = () => {
@@ -25,12 +23,12 @@ const Header = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
-              <Link to="/cart" style={{ textDecoration: "none" }}>
+              <p to=""  style={{ textDecoration: "none" }} onClick={()=>userInfo? navigate("/cart"):navigate("/login")}>
                 <Nav.Link href="#home" className="text-light">
                   <i className="fa-solid fa-cart-shopping text-dark"></i>
                   &nbsp;Cart
                 </Nav.Link>
-              </Link>
+              </p>
               {userInfo ? (
                 <NavDropdown title={userInfo.name} id="username">
                   <Link to="/profile" style={{ textDecoration: "none" }} onClick={()=>(navigate("/profile"))}>

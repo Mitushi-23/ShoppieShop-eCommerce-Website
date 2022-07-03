@@ -11,7 +11,7 @@ import {
   Row,
 } from "react-bootstrap";
 import Rating from "../components/Rating";
-import { generatePath, Link, useNavigate, useParams } from "react-router-dom";
+import {  Link, useNavigate, useParams } from "react-router-dom";
 import Loader from "../components/shared/Loader";
 import Message from "../components/shared/Message";
 
@@ -30,15 +30,7 @@ const ProductDetails = () => {
   }, [ dispatch]);
   
   
-//  const addToCartHandler=()=>{
-//   const path = generatePath("/cart/:queryString/qty=:quantity",{
 
-//     queryString:params.id,
-//     quantity:qty
-//   })
-//       navigate(path)
-//       console.log("first")    
-//   }
 
 const addToCartHandler = () =>{
     

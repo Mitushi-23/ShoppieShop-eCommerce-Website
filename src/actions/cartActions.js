@@ -4,15 +4,17 @@ import {
   CART_SAVE_PAYMENT_METHOD,
   CART_SAVE_SHIPPING_ADDRESS,
 } from "../constants/cartConstant";
-
 import axiosInstance from "../config";
 
-
 export const addToCart = (id, qty) => async (dispatch, getState) => {
-  const { data } = await axiosInstance.get(`/products/${id}`);
+  const { data } = await axiosInstance.get(`/api/products/${id}`);
+  const {
+    userLogin: { userInfo },
+  } = getState();
   dispatch({
     type: CART_ADD_ITEM,
     payload: {
+      userId:userInfo._id,
       product: data._id,
       name: data.name,
       image: data.image,
