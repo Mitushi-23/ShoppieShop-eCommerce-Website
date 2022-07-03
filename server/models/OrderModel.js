@@ -55,11 +55,11 @@ const orderSchema = mongoose.Schema({
   },
   paymentResult: {
     id: {
-      type: Number,
+      type: String,
     },
     status: { type: String },
     update_time: { type: String },
-    emai_address: { type: String },
+    email_address: { type: String },
   },
   taxPrice: {
     type: Number,
