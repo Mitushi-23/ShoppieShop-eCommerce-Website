@@ -7,7 +7,7 @@ import {
 import axiosInstance from "../config";
 
 export const addToCart = (id, qty) => async (dispatch, getState) => {
-  const { data } = await axiosInstance.get(`/api/products/${id}`);
+  const { data } = await axiosInstance.get(`/products/${id}`);
   const {
     userLogin: { userInfo },
   } = getState();

@@ -11,7 +11,7 @@ import {
 export const listProducts = () => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_LIST_REQUEST })
-    const { data } = await axiosInstance.get('/api/products')
+    const { data } = await axiosInstance.get('/products')
     dispatch({
       type: PRODUCT_LIST_SUCCESS,
       payload: data,
@@ -31,7 +31,7 @@ export const listProducts = () => async (dispatch) => {
 export const detailsProducts = (id) => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_DETAILS_REQUEST })
-    const { data } = await axiosInstance.get(`/api/products/${id}`)
+    const { data } = await axiosInstance.get(`/products/${id}`)
     // console.log(data)
     dispatch({
       type: PRODUCT_DETAILS_SUCCESS,

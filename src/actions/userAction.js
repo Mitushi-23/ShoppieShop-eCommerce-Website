@@ -29,7 +29,7 @@ export const login = (email, password) => async (dispatch) => {
     dispatch({ type: USER_LOGIN_REQUEST });
     const config = { headers: { "Contnet-Type": "application/json" } };
     const { data } = await axiosInstance.post(
-      "/api/users/login",
+      "/users/login",
       { email, password },
       config
     );
@@ -55,7 +55,7 @@ export const register = (name, email, password) => async (dispatch) => {
     dispatch({ type: USER_REGISTER_REQUEST });
     const config = { headers: { "Contnet-Type": "application/json" } };
     const { data } = await axiosInstance.post(
-      "/api/users",
+      "/users",
       { name, email, password },
       config
     );
@@ -95,7 +95,7 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
         Authorization: `${userInfo.token}`,
       },
     };
-    const { data } = await axiosInstance.get(`/api/users/${id}`, config);
+    const { data } = await axiosInstance.get(`/users/${id}`, config);
     console.log(data);
 
     dispatch({
@@ -128,7 +128,7 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
         Authorization: `${userInfo.token}`,
       },
     };
-    const { data } = await axiosInstance.put("/api/users/profile", user,config);
+    const { data } = await axiosInstance.put("/users/profile", user,config);
     console.log(data);
 
     dispatch({

@@ -15,7 +15,7 @@ export const createOrder =(order)=>async(dispatch,getState)=>{
               Authorization: `${userInfo.token}`,
             },
           };
-          const {data} = await axiosInstance.post('/api/orders',order,config);
+          const {data} = await axiosInstance.post('/orders',order,config);
           dispatch({
             type:ORDER_CREATE_SUCCESS,
             payload:data
@@ -45,7 +45,7 @@ export const detailsOrder =(id)=>async(dispatch,getState)=>{
             Authorization: `${userInfo.token}`,
           },
         };
-        const {data} = await axiosInstance.get(`/api/orders/${id}`,config);
+        const {data} = await axiosInstance.get(`/orders/${id}`,config);
         dispatch({
           type:ORDER_DETAILS_SUCCESS,
           payload:data
@@ -77,7 +77,7 @@ export const payOrder =(orderId, paymentResult)=>async(dispatch,getState)=>{
             Authorization: `${userInfo.token}`,
           },
         };
-        const {data} = await axiosInstance.put(`/api/orders/${orderId}/pay`,paymentResult,config);
+        const {data} = await axiosInstance.put(`/orders/${orderId}/pay`,paymentResult,config);
         dispatch({
           type:ORDER_PAY_SUCCESS,
           payload:data
@@ -107,7 +107,7 @@ export const listOrders =()=>async(dispatch,getState)=>{
             Authorization: `${userInfo.token}`,
           },
         };
-        const {data} = await axiosInstance.get('/api/orders/myorders',config);
+        const {data} = await axiosInstance.get('/orders/myorders',config);
         dispatch({
           type:ORDER_LIST_MY_SUCCESS,
           payload:data
