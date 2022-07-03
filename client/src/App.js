@@ -6,6 +6,7 @@ import Header from './components/Header';
 import Cart from './pages/Cart';
 import Home from './pages/Home';
 import Login from './pages/Login';
+import Order from './pages/Order';
 import Payment from './pages/Payment';
 import PlaceOrder from './pages/PlaceOrder';
 import ProductDetails from './pages/ProductDetails';
@@ -24,16 +25,17 @@ const App = () => {
         <h1 className='text-center my-3' style={{color:'black'}}>ShoppieShop</h1>
         <Routes>
        <Route path="/"  element = {<Home/>} exact/>
-       <Route path="/products/:id" element= {<ProductDetails/>} exact/>
-       <Route path="/cart/:id" element= {<Cart/>} exact/>
-       <Route path="/cart" element= {<Cart/>} exact/>
-       <Route path="/profile" element= {<ProfileScreen/>} exact/>
-       <Route path="/login" element= {<Login/>} exact/>
-       <Route path="/login/shipping" element= {<ShippingSreen/>} exact/>
-       <Route path="/register" element= {<Register/>} exact/>
-       <Route path="/shipping" element= {<ShippingSreen/>} exact/>
-       <Route path="/payment" element= {<Payment/>} exact/>
-       <Route path="/placeorder" element= {<PlaceOrder/>} exact/>
+       <Route path="/products/:id" element= {<ProductDetails/>} />
+       <Route path="/cart/:id" element= {<Cart/>} />
+       <Route path="/cart" element= {<Cart/>} />
+       <Route path="/profile" element= {<ProfileScreen/>} />
+       <Route path="/login" element= {<Login/>} />
+       <Route path="/login/shipping" element= {<ShippingSreen/>} />
+       <Route path="/register" element= {<Register/>} />
+       <Route path="/shipping" element= {<ShippingSreen/>} />
+       <Route path="/payment" element= {<Payment/>} />
+       <Route path="/placeorder" element= {<PlaceOrder/>} />
+       <Route path="/order/:id" element= {<Order/>} />
        </Routes>
       </Container>
       </main>
