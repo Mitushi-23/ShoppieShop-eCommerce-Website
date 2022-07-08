@@ -5,8 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUserDetails , updateUserProfile } from "../actions/userAction";
 import Message from "../components/shared/Message";
 import Loader from "../components/shared/Loader";
-import { listOrders } from "../actions/orderAction";
-import {LinkContainer} from 'react-router-bootstrap'
+import { detailsOrder, listOrders } from "../actions/orderAction";
 
 
 const ProfileScreen = () => {
@@ -53,7 +52,10 @@ const ProfileScreen = () => {
     e.preventDefault();
     dispatch(updateUserProfile({id:user._id, name, email,password}))
   };
-
+const getDetails = (id)=>{
+  navigate(`/order/${id}`);
+  dispatch(detailsOrder(id))
+}
   return (
     <>
     
@@ -141,9 +143,9 @@ const ProfileScreen = () => {
                           <i className="fas fa-times" style={{color:'red'}}></i>
                         )}</td>
                         <td>
-                          <LinkContainer to={`/order/${order._id}`}>
-                            <Button variant="light">Details</Button>
-                          </LinkContainer>
+                          {/* <LinkContainer to={`/order/${order._id}`}> */}
+                            <Button variant="light" onClick={()=>{getDetails(order._id)}}>Details</Button>
+                          {/* </LinkContainer> */}
                         </td>
                       </tr>
                     ))

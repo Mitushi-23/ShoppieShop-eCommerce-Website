@@ -14,9 +14,13 @@ import {PayPalButton} from 'react-paypal-button-v2'
 import { ORDER_PAY_RESET } from "../constants/orderConstant";
 
 const Order = () => {
+
+  // window.location.reload()
+
   const [sdkReady, setSdkReady] = useState(false)
   const params = useParams();
   const orderId = params.id;
+  console.log(orderId)
   const dispatch = useDispatch();
   const orderPay = useSelector((state)=>state.orderPay);
   const {loading:loadingPay , success:successPay} = orderPay
@@ -48,10 +52,14 @@ const Order = () => {
       }
       document.body.appendChild(script);
     }
+    if(order)
+    {
+
+    }
     if(!order || successPay)
     {
-      dispatch({type : ORDER_PAY_RESET })
       dispatch(detailsOrder(orderId));
+      dispatch({type : ORDER_PAY_RESET })
     }
     else
     if(!order.isPaid)
@@ -67,7 +75,9 @@ const Order = () => {
     }
   }, [dispatch, orderId,order,successPay]);
 
-  return loading ? (
+  return (
+  
+  loading ? (
     <Loader />
   ) : error ? (
     <Message variant="danger">{error}</Message>
@@ -106,7 +116,7 @@ const Order = () => {
               <strong>{order.paymentMethod}</strong>
             </p>
             {
-                order.isPaid ? <Message variant="success">Paid On {order.paidAt}</Message>
+                order.isPaid ? <Message variant="success">Paid On {order.paidAt.substring(0,10)}</Message>
                 :
                  <Message variant="danger">Not Paid</Message>
             }
@@ -124,7 +134,7 @@ const Order = () => {
                                         <Image src={item.image} alt={item.name} fluid/>
                                     </Col>
                                     <Col>
-                                    <Link to={`/product/${item.product}`}>{item.name}</Link>
+                                    <Link to={`/products/${item.product}`}>{item.name}</Link>
                                     </Col>
                                     <Col md={4}>
                                      {item.qty} x {item.price} = {item.price}
@@ -175,7 +185,7 @@ const Order = () => {
         </Col>
       </Row>
     </>
-  );
+  ))
 };
 
 export default Order;

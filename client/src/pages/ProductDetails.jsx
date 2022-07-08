@@ -5,7 +5,6 @@ import {
   Button,
   Col,
   Form,
-  Image,
   ListGroup,
   ListGroupItem,
   Row,
@@ -14,6 +13,8 @@ import Rating from "../components/Rating";
 import {  Link, useNavigate, useParams } from "react-router-dom";
 import Loader from "../components/shared/Loader";
 import Message from "../components/shared/Message";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 
 
@@ -51,11 +52,12 @@ const addToCartHandler = () =>{
           </Link>
           <Row style={{ margin: "10% 0%" }}>
             <Col md={6}>
-              <Image
+              <LazyLoadImage
                 src={product.image}
                 alt={product.name}
                 width={"400px"}
                 fluid
+                effect="blur"
               />
             </Col>
             <Col md={6}>

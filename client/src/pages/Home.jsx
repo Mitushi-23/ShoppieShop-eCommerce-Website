@@ -6,6 +6,7 @@ import { listProducts } from "../actions/productActions";
 import Loader from "../components/shared/Loader";
 import Message from "../components/shared/Message";
 
+
 const Home = () => {
   const dispatch = useDispatch();
 

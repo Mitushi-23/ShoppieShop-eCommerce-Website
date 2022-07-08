@@ -4,7 +4,7 @@ import CheckoutStep from "../components/shared/CheckoutStep";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/shared/Message";
 import { Link, useNavigate } from "react-router-dom";
-import { createOrder } from "../actions/orderAction";
+import { createOrder, detailsOrder } from "../actions/orderAction";
 import { useEffect } from "react";
 
 const PlaceOrder = () => {
@@ -43,13 +43,15 @@ const PlaceOrder = () => {
     totalPrice: cart.totalPrice,
   };
   console.log(itemsCart)
-  const placeOrderHandler = () => {
+  const placeOrderHandler = (e) => {
+    e.preventDefault();
     dispatch(createOrder(order_item));
   };
   const navigate = useNavigate();
   useEffect(() => {
     if (success) {
       navigate(`/order/${order._id}`);
+      dispatch(detailsOrder(order._id))
     }
   }, [navigate, success]);
 
