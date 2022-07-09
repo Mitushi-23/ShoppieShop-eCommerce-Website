@@ -62,8 +62,8 @@ const addToCartHandler = () =>{
             </Col>
             <Col md={6}>
               <ListGroupItem>
-                <h3>{product.name}</h3>
-                <hr />
+                <h3 style={{textTransform:'capitalize'}}>{product.name}</h3>
+                <hr style={{height:'1px'}}/>
                 Brand: {product.brand}
               </ListGroupItem>
               <ListGroupItem>

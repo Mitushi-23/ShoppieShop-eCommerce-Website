@@ -18,7 +18,7 @@ const Product = ({ product }) => {
             style={{ textDecoration: "none" }}
           >
             <Card.Title as="div">
-              <strong>{product.name}</strong>
+              <strong style={{textTransform:'capitalize'}}>{product.name}</strong>
             </Card.Title>
           </Link>
           <Card.Text as="div">
