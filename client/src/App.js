@@ -1,5 +1,7 @@
 import React from 'react';
+import { useState } from 'react';
 import { Container } from 'react-bootstrap';
+import { useLocation, useParams } from 'react-router-dom';
 import {BrowserRouter as Router , Route,Routes} from 'react-router-dom';
 import Footer from './components/Footer';
 import Header from './components/Header';
@@ -16,13 +18,22 @@ import Register from './pages/Register';
 import ShippingSreen from './pages/ShippingSreen';
 
 const App = () => {
+  // const location = useLocation();
+  // const [value, setvalue] = useState(location);
+  // console.log(location)
+
+  //style={{fontSize:'60px',fontWeight:'bold',letterSpacing:'2px'}}
+
   return (
     <>
     <Router>
       <Header/>
     <main>
       <Container>
-        <h1 className='text-center my-3' style={{color:'black'}}>ShoppieShop</h1>
+        <br />
+        <h1 className='text-center my-3' style={{fontSize:'48px',fontWeight:'700', letterSpacing:'1.5px'}}>ShoppieShop</h1>
+        <br />
+        <br />
         <Routes>
        <Route path="/"  element = {<Home/>} exact/>
        <Route path="/products/:id" element= {<ProductDetails/>} />
