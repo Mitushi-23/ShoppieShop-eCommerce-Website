@@ -12,6 +12,7 @@ import axios from "axios";
 import { useState } from "react";
 import {PayPalButton} from 'react-paypal-button-v2'
 import { ORDER_PAY_RESET } from "../constants/orderConstant";
+import axiosInstance from "../config";
 
 const Order = () => {
 
@@ -42,7 +43,7 @@ const Order = () => {
   
   useEffect(() => {
     const addPaypalScript = async()=>{
-      const {data:clientId} = await axios.get('/config/paypal')
+      const {data:clientId} = await axiosInstance.get('/config/paypal')
       const script = document.createElement('script')
       script.type = 'text/javascript'
       script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}`
