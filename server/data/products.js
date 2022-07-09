@@ -561,7 +561,7 @@ const Products = [
     description:'Faux Marble Top, Wooden Legs, Leatherette Upholstered Chair, Modern Design',
     price:'17999',
     image:'https://royaloakindia.com/media/catalog/product/cache/9f2cca334f24bf1e4c4fd3bc2c254f55/r/o/royaloak-dolphin-faux-marble-4-seater-dining-table-set-1.jpg',
-    category:'Kitchen & Dining',
+    category:'home & furniture',
     countInStock: "101",
     rating: "4.5",
     numReviews: "12",
