@@ -50,7 +50,7 @@ const addToCartHandler = () =>{
           <Link to="/" style={{ textDecoration: "none" }}>
             <i class="fa-solid fa-arrow-left-long"></i> &nbsp;GO BACK
           </Link>
-          <Row style={{ margin: "10% 0%" }}>
+          <Row style={{ margin: "5% 0%" }}>
             <Col md={6}>
               <LazyLoadImage
                 src={product.image}
@@ -62,9 +62,8 @@ const addToCartHandler = () =>{
             </Col>
             <Col md={6}>
               <ListGroupItem>
-                <h3>{product.name}</h3>
-                <hr />
-                Brand: {product.brand}
+                <h3 style={{textTransform:'capitalize'}}>{product.name}</h3>
+                <hr style={{height:'1px'}}/>
               </ListGroupItem>
               <ListGroupItem>
                 <Rating
@@ -73,9 +72,12 @@ const addToCartHandler = () =>{
                 />
               </ListGroupItem>
               <ListGroupItem>
+                
                 <strong> Price :</strong> &nbsp;{" "}
+                  
                 <i className="fa-solid fa-indian-rupee-sign"></i>&nbsp;
                 {product.price}
+             
               </ListGroupItem>
               <ListGroupItem>{product.description}</ListGroupItem>
 
