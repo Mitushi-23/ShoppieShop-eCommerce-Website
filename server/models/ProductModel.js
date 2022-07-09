@@ -31,7 +31,7 @@ const productSchema = mongoose.Schema({
   },
   brand: {
     type: String,
-    required: true,
+    // required: true,
   },
   category: {
     type: String,
@@ -48,7 +48,7 @@ const productSchema = mongoose.Schema({
   },
   numReviews:{
       type:Number,
-      required:true
+      // required:true
   },
   price:{
       type:Number,

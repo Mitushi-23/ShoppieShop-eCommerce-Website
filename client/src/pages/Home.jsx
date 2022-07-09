@@ -25,13 +25,21 @@ const Home = () => {
       ) : error ? (
         <Message variant="danger">{error}</Message>
       ) : (
+        <>
         <Row>
-          {products.map((product) => (
-            <Col key={product._id} md={3}>
-              <Product product={product} />
-            </Col>
+          {products.map((product) => (    
+              <Col key={product._id} md={3} style={{height:'450px'}}>
+                <Product product={product} />
+              </Col>
           ))}
         </Row>
+        <Row>
+          <h1>
+
+          Men's Fashion
+          </h1>
+        </Row>
+        </>
       )}
     </>
   );
