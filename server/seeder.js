@@ -12,14 +12,15 @@ connectDb()
 
 const importData = async () => {
   try {
-    await Order.deleteMany()
-    await User.deleteMany()
+    // await Order.deleteMany()
+    // await User.deleteMany()
     await Product.deleteMany()
 
-    const createUser = await User.insertMany(users)
-    const adminUser = createUser[0]._id
+    // const createUser = await User.insertMany(users)
+    // const adminUser = createUser[0]._id
     const sampleData = products.map((product) => {
-      return { ...product, user: adminUser }
+      // return { ...product, user: adminUser }
+      return {...product}
     })
     await Product.insertMany(sampleData)
     console.log('Data imported!!!')

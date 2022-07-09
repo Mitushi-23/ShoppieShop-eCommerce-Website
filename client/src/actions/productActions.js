@@ -6,6 +6,9 @@ import {
   PRODUCT_DETAILS_FAILS,
   PRODUCT_DETAILS_REQUEST,
   PRODUCT_DETAILS_SUCCESS,
+  PRODUCT_CATEGORY_REQUEST,
+  PRODUCT_CATEGORY_SUCCESS,
+  PRODUCT_CATEGORY_FAILS,
 } from '../constants/productConstant'
 
 export const listProducts = () => async (dispatch) => {
@@ -40,6 +43,26 @@ export const detailsProducts = (id) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: PRODUCT_DETAILS_FAILS,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    })
+  }
+}
+
+export const productCategory = (category)=> async(dispatch)=>{
+  try {
+    dispatch({type: PRODUCT_CATEGORY_REQUEST})
+    const data = category;
+    console.log(data)
+    dispatch({
+      type:PRODUCT_CATEGORY_SUCCESS,
+      payload: data,
+    })
+  } catch (error) {
+    dispatch({
+      type: PRODUCT_CATEGORY_FAILS,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message
