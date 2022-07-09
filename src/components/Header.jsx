@@ -1,10 +1,12 @@
 import React from "react";
 import { Nav, Navbar, Container, NavDropdown, Form } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../actions/userAction";
 import { useState } from "react";
 import {productCategory} from '../actions/productActions'
+import { useParams } from "react-router-dom";
+import logo from '../assets/logo/logo1.png'
 
 const Header = () => {
   const [category, setcategory] = useState("null")
@@ -16,6 +18,8 @@ const Header = () => {
     navigate("/login");
     dispatch(logout());
   };
+  const location = useLocation();
+
   const handleClick=(e)=>{
     setcategory(e.target.value);
     dispatch(productCategory(e.target.value));
@@ -25,12 +29,13 @@ const Header = () => {
       <Navbar bg="" expand="lg" collapseOnSelect>
         <Container>
           <Link to="/" style={{ textDecoration: "none" }}>
-            <Navbar.Brand>ONLINE SHOP</Navbar.Brand>
+            <Navbar.Brand><img src={logo} width="150px" style={{borderRadius:'50px'}}></img></Navbar.Brand>
           </Link>
+          {location.pathname==='/' &&
           <Form.Select
-            aria-label="Default select example"
-            style={{ width: "75%", margin: "auto" }}
-            onChange={(e)=>{handleClick(e)}}
+          aria-label="Default select example"
+          style={{ width: "75%", margin: "auto" ,height:'40px',padding:'0px 10px',borderRadius:'0px'}}
+          onChange={(e)=>{handleClick(e)}}
           >
             <option value="null">Filter By Category</option>
             <option value="men">Men's Fashion</option>
@@ -42,23 +47,24 @@ const Header = () => {
             <option value="home & furniture">Home & Furniture</option>
             <option value="tools & hardware">Tools & Hardware</option>
           </Form.Select>
+          }
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
               <p
                 to=""
-                style={{ textDecoration: "none" }}
+                style={{ textDecoration: "none",marginTop:'1rem' }}
                 onClick={() =>
                   userInfo ? navigate("/cart") : navigate("/login")
                 }
               >
-                <Nav.Link href="#home" className="text-light">
+                <Nav.Link href="#home" className="">
                   <i className="fa-solid fa-cart-shopping text-dark"></i>
                   &nbsp;Cart
                 </Nav.Link>
               </p>
               {userInfo ? (
-                <NavDropdown title={userInfo.name} id="username">
+                <NavDropdown title={userInfo.name} id="username" style={{marginTop:'1rem'}}>
                   <Link
                     to="/profile"
                     style={{ textDecoration: "none" }}
@@ -72,7 +78,7 @@ const Header = () => {
                 </NavDropdown>
               ) : (
                 <Link to="/login" style={{ textDecoration: "none" }}>
-                  <Nav.Link href="#link" className="text-light">
+                  <Nav.Link href="#link" className="" style={{marginTop:'1rem'}}>
                     <i className="fa-solid fa-user text-dark"></i>
                     &nbsp; SignIn
                   </Nav.Link>
