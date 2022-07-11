@@ -13,7 +13,7 @@ const PlaceOrder = () => {
   const { order, error, success } = orderCreate;
   const cart = useSelector((state) => state.cart);
   const addDecimal = (num) => {
-    return (Math.round(num * 100) / 100).toFixed(2);
+    return (Math.round(num * 100) / 100).toFixed(1);
   };
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
