@@ -121,7 +121,7 @@ const ProfileScreen = () => {
             <Button  variant="dark" onClick={()=>setdisable("")}>Edit</Button>
             &nbsp;
             &nbsp;
-            <Button type="submit" variant="dark">
+            <Button type="submit" variant="dark" disabled={disable}>
               Update
             </Button>
           </Form>
