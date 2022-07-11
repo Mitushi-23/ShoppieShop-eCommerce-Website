@@ -13,6 +13,7 @@ const ProfileScreen = () => {
   const [password, setPassword] = useState("");
   const [confirmpassword, setConfirmPassword] = useState("");
   const [image, setImage] = useState(null);
+  const [disable, setdisable] = useState("disabled")
 
   const dispatch = useDispatch();
   const userDetails = useSelector((state) => state.userDetails);
@@ -80,6 +81,7 @@ const ProfileScreen = () => {
                 placeholder="Enter Name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
+                disabled={disable}
               ></Form.Control>
             </Form.Group>
             <br />
@@ -90,6 +92,7 @@ const ProfileScreen = () => {
                 placeholder="Enter Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                disabled={disable}
               ></Form.Control>
             </Form.Group>
             <br />
@@ -100,6 +103,7 @@ const ProfileScreen = () => {
                 placeholder="Enter Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                disabled={disable}
               ></Form.Control>
             </Form.Group>
             <br />
@@ -110,9 +114,13 @@ const ProfileScreen = () => {
                 placeholder="Re-Enter Password"
                 value={confirmpassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
+                disabled={disable}
               ></Form.Control>
             </Form.Group>
             <br />
+            <Button  variant="dark" onClick={()=>setdisable("")}>Edit</Button>
+            &nbsp;
+            &nbsp;
             <Button type="submit" variant="dark">
               Update
             </Button>
