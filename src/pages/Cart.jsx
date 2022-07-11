@@ -58,7 +58,7 @@ const Cart = () => {
       <Row>
         <Col md={8}>
           <h1>Shopping Cart</h1>
-          {cartItems.length === 0 ? (
+          {itemsCart.length === 0 ? (
             <Message>
               Your cart is empty !&nbsp;<Link to="/">GO BACK</Link>
             </Message>

@@ -1,19 +1,17 @@
 import React from 'react';
-import { useState } from 'react';
 import { Container } from 'react-bootstrap';
-import { useLocation, useParams } from 'react-router-dom';
 import {BrowserRouter as Router , Route,Routes} from 'react-router-dom';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import Cart from './pages/Cart';
 import Home from './pages/Home';
 import Login from './pages/Login';
+import MyOrder from './pages/MyOrder';
 import Order from './pages/Order';
 import Payment from './pages/Payment';
 import PlaceOrder from './pages/PlaceOrder';
 import ProductDetails from './pages/ProductDetails';
 import ProfileScreen from './pages/ProfileScreen';
-// import Profile from './pages/ProfileScreen';
 import Register from './pages/Register';
 import ShippingSreen from './pages/ShippingSreen';
 
@@ -34,6 +32,7 @@ const App = () => {
        <Route path="/cart/:id" element= {<Cart/>} />
        <Route path="/cart" element= {<Cart/>} />
        <Route path="/profile" element= {<ProfileScreen/>} />
+       <Route path="/myorders" element= {<MyOrder/>} />
        <Route path="/login" element= {<Login/>} />
        <Route path="/login/shipping" element= {<ShippingSreen/>} />
        <Route path="/register" element= {<Register/>} />

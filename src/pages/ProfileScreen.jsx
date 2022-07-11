@@ -1,159 +1,155 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Form, Row, Col, Button, Table } from "react-bootstrap";
+import { Form, Row, Col, Button} from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { getUserDetails , updateUserProfile } from "../actions/userAction";
+import { getUserDetails, updateUserProfile } from "../actions/userAction";
 import Message from "../components/shared/Message";
 import Loader from "../components/shared/Loader";
-import { detailsOrder, listOrders } from "../actions/orderAction";
-
+import LinkedCameraOutlinedIcon from "@mui/icons-material/LinkedCameraOutlined";
 
 const ProfileScreen = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmpassword, setConfirmPassword] = useState("");
-  // const [message, setMessage] = useState("");
+  const [image, setImage] = useState(null);
 
   const dispatch = useDispatch();
-  const userDetails = useSelector((state)=> state.userDetails);
-  const {loading, error,user} = userDetails
+  const userDetails = useSelector((state) => state.userDetails);
+  const { loading, error, user } = userDetails;
   const userLogin = useSelector((state) => state.userLogin);
-  const {userInfo} = userLogin;
-  const userUpdateProfile = useSelector((state)=>state.userUpdateProfile)
-  const {success} = userUpdateProfile
+  const { userInfo } = userLogin;
+  const userUpdateProfile = useSelector((state) => state.userUpdateProfile);
+  const { success } = userUpdateProfile;
 
-  const orderList = useSelector((state)=>state.orderList);
-  const {loading:loadingOrders , orders , error:errorOrders} = orderList
+  
 
- let navigate  =  useNavigate();
+  let navigate = useNavigate();
 
-  useEffect(()=>{
-      if(!userInfo)
-      {
-          navigate("/login");
+  useEffect(() => {
+    if (!userInfo) {
+      navigate("/login");
+    } else {
+      if (!user.name) {
+        dispatch(getUserDetails("profile"));
+      } else {
+        setName(user.name);
+        setEmail(user.email);
       }
-      else
-      {
-          if(!user.name)
-          {
-            dispatch(listOrders())
-              dispatch(getUserDetails("profile"))
-          }
-          else
-          {
-              setName(user.name);
-              setEmail(user.email);
-          }
-      }
-  },[navigate, userInfo, user, dispatch])
+    }
+  }, [navigate, userInfo, user, dispatch]);
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(updateUserProfile({id:user._id, name, email,password}))
+    dispatch(updateUserProfile({ id: user._id, name, email, password }));
   };
-const getDetails = (id)=>{
-  navigate(`/order/${id}`);
-  dispatch(detailsOrder(id))
-}
   return (
     <>
-    
       <Row>
-          <Col md={3}>
-          <h1>UPDATE PROFILE</h1>
-      
-        {loading && <Loader/>}
-      {error && <Message variant="danger">{error}</Message>}
-        {success && <Message variant="success">Profile Updated</Message>}
-        {/* {message && <Message variant="danger">{message}</Message>} */}
-        <Form
-        onSubmit={submitHandler}
+        <Col
+          md={5}
+          style={{
+            backgroundColor: "rgba(94, 134, 157, 0.70)",
+            padding: "50px",
+            borderRadius: "6px",
+            borderTopLeftRadius: "70px",
+            borderBottomRightRadius: "70px",
+            color: "whitesmoke",
+          }}
         >
+          {loading && <Loader />}
+          {error && <Message variant="danger">{error}</Message>}
+          {success && <Message variant="success">Profile Updated</Message>}
+          {/* {message && <Message variant="danger">{message}</Message>} */}
+          <h1
+            style={{
+              textAlign: "center",
+              fontWeight: "800",
+              fontStyle: "italic",
+              fontFamily: "auto",
+              color: "bisque",
+            }}
+          >
+            UPDATE PROFILE
+          </h1>
+          <Form onSubmit={submitHandler}>
             <Form.Group controlId="name">
-            <Form.Label>Name</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Enter Name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            ></Form.Control>
-          </Form.Group>
-          <br />
-          <Form.Group controlId="email">
-            <Form.Label>Email Address</Form.Label>
-            <Form.Control
-              type="email"
-              placeholder="Enter Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            ></Form.Control>
-          </Form.Group>
-          <br />
-          <Form.Group controlId="password">
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              type="password"
-              placeholder="Enter Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            ></Form.Control>
-          </Form.Group>
-          <br />
-          <Form.Group controlId="confirmpassword">
-            <Form.Label>Confirm Password</Form.Label>
-            <Form.Control
-              type="password"
-              placeholder="Re-Enter Password"
-              value={confirmpassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-            ></Form.Control>
-          </Form.Group>
-          <br />
-          <Button type="submit" variant="dark">
-            Update
-          </Button>
-        </Form>
-          </Col>
-          <Col md={9}>
-            <h1>My Orders</h1>
-            {loadingOrders ? <Loader/> : errorOrders ? <Message variant="danger">{errorOrders}</Message>:(
-              <Table striped bordered hover responsive className="table-sm">
-                <thead>
-                  <tr>
-                    <td>ID</td>
-                    <td>DATE</td>
-                    <td>TOTAL</td>
-                    <td>PAID</td>
-                    <td>DELIVERED</td>
-                    <td></td>
-                  </tr>
-                </thead>
-                <tbody>
-                  {
-                    orders.map(order=>(
-                      <tr key={order._id}>
-                        <td>{order._id}</td>
-                        <td>{order.createdAt.substring(0,10)}</td>
-                        <td>{order.totalPrice}</td>
-                        <td>{order.isPaid ? order.paidAt.substring(0,10):(
-                          <i className="fas fa-times" style={{color:'red'}}></i>
-                        )}</td>
-                        <td>{order.isDelivered ? order.deliveredAt.substring(0,10):(
-                          <i className="fas fa-times" style={{color:'red'}}></i>
-                        )}</td>
-                        <td>
-                          {/* <LinkContainer to={`/order/${order._id}`}> */}
-                            <Button variant="light" onClick={()=>{getDetails(order._id)}}>Details</Button>
-                          {/* </LinkContainer> */}
-                        </td>
-                      </tr>
-                    ))
-                  }
-                </tbody>
-              </Table>
+              <Form.Label>Name</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter Name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+            <br />
+            <Form.Group controlId="email">
+              <Form.Label>Email Address</Form.Label>
+              <Form.Control
+                type="email"
+                placeholder="Enter Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+            <br />
+            <Form.Group controlId="password">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                type="password"
+                placeholder="Enter Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+            <br />
+            <Form.Group controlId="confirmpassword">
+              <Form.Label>Confirm Password</Form.Label>
+              <Form.Control
+                type="password"
+                placeholder="Re-Enter Password"
+                value={confirmpassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+            <br />
+            <Button type="submit" variant="dark">
+              Update
+            </Button>
+          </Form>
+        </Col>
+        <Col md={5} style={{ margin: "auto" }}>
+          {image ?(
+            
+            <img src={URL.createObjectURL(image)}  alt="" />
+          ):(
+          <div
+            style={{
+              backgroundColor: "#98cde259",
+              padding: "15px",
+              borderRadius: "50%",
+              width: "100px",
+              height: "100px",
+            }}
+          >
+            <LinkedCameraOutlinedIcon style={{ textAlign: "center" }} />
+
+              <p>No Image</p>
+          </div>
             )}
-          </Col>
+
+          {/* <DriveFolderUploadOutlinedIcon/> */}
+          <br />
+          <div>
+            <input
+              type="file"
+              accept="image/*"
+              onChange={(event) => {
+                setImage(event.target.files[0]);
+              }}
+            />
+          </div>
+        </Col>
       </Row>
     </>
   );

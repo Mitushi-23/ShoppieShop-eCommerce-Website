@@ -34,17 +34,18 @@ console.log(params)
     e.preventDefault();
     dispatch(login(email,password))
   };
-
+//hsl(202deg 25% 49% / 67%)
   return (
     <>
       <FormContainer>
-        <h1>SIGN IN</h1>
         {error && <Message variant="danger">{error}</Message>}
         {loading && <Loader/>}
         {Loader}
-        <Form
+        <Form style={{backgroundColor:'rgba(94, 134, 157, 0.70)',padding:'50px',borderRadius:'6px',borderTopLeftRadius:'70px',borderBottomRightRadius:'70px',color:'whitesmoke'}}
         onSubmit={submitHandler}
         >
+        <h1 style={{textAlign:'center',fontWeight:'800',fontStyle:'italic',fontFamily:'auto',color:'bisque',fontSize:'50px'}}>SIGN IN</h1>
+        <br />
           <Form.Group controlId="email">
             <Form.Label>Email Address</Form.Label>
             <Form.Control
@@ -75,6 +76,7 @@ console.log(params)
               New Customer ?{" "}
               <Link
                 to={'/register'}
+                // style={{color:'white'}}
               >
                 Register
               </Link>

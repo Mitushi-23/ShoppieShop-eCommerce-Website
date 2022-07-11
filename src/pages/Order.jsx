@@ -8,7 +8,6 @@ import Loader from "../components/shared/Loader";
 import Message from "../components/shared/Message";
 import { Card, Col, Image, Row } from 'react-bootstrap';
 import { Link } from "react-router-dom";
-import axios from "axios";
 import { useState } from "react";
 import {PayPalButton} from 'react-paypal-button-v2'
 import { ORDER_PAY_RESET } from "../constants/orderConstant";

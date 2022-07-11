@@ -3,13 +3,10 @@ import { Nav, Navbar, Container, NavDropdown, Form } from "react-bootstrap";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../actions/userAction";
-import { useState } from "react";
 import {productCategory} from '../actions/productActions'
-import { useParams } from "react-router-dom";
 import logo from '../assets/logo/logo1.png'
 
 const Header = () => {
-  const [category, setcategory] = useState("null")
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
   const navigate = useNavigate();
@@ -21,7 +18,6 @@ const Header = () => {
   const location = useLocation();
 
   const handleClick=(e)=>{
-    setcategory(e.target.value);
     dispatch(productCategory(e.target.value));
   }
   return (
@@ -29,12 +25,12 @@ const Header = () => {
       <Navbar bg="" expand="lg" collapseOnSelect>
         <Container>
           <Link to="/" style={{ textDecoration: "none" }}>
-            <Navbar.Brand><img src={logo} width="150px" style={{borderRadius:'50px'}}></img></Navbar.Brand>
+            <Navbar.Brand><img src={logo} alt="" width="150px" style={{borderRadius:'50px'}}></img></Navbar.Brand>
           </Link>
           {location.pathname==='/' &&
           <Form.Select
           aria-label="Default select example"
-          style={{ width: "75%", margin: "auto" ,height:'40px',padding:'0px 10px',borderRadius:'0px'}}
+          style={{ maxWidth: "70%", margin: "auto" ,height:'40px',padding:'0px 10px',borderRadius:'0px'}}
           onChange={(e)=>{handleClick(e)}}
           >
             <option value="null">Filter By Category</option>
@@ -71,6 +67,13 @@ const Header = () => {
                     onClick={() => navigate("/profile")}
                   >
                     <NavDropdown.Item>Profile</NavDropdown.Item>
+                  </Link>
+                  <Link
+                    to="/myorders"
+                    style={{ textDecoration: "none" }}
+                    onClick={() => navigate("/myorders")}
+                  >
+                    <NavDropdown.Item>My Orders</NavDropdown.Item>
                   </Link>
                   <NavDropdown.Item onClick={logoutHandler}>
                     Logout

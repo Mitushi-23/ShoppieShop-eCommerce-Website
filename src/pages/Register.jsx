@@ -42,14 +42,15 @@ const navigate = useNavigate();
   return (
     <>
       <FormContainer>
-        <h1>REGISTER</h1>
         {error && <Message variant="danger">{error}</Message>}
         {loading && <Loader/>}
         {Loader}
         {message && <Message variant="danger">{message}</Message>}
         <Form
+        style={{backgroundColor:'rgba(94, 134, 157, 0.70)',padding:'50px',borderRadius:'6px',borderTopLeftRadius:'70px',borderBottomRightRadius:'70px',color:'whitesmoke'}}
         onSubmit={submitHandler}
         >
+          <h1 style={{textAlign:'center',fontWeight:'800',fontStyle:'italic',fontFamily:'auto',color:'bisque',fontSize:'50px'}}>REGISTER</h1>
             <Form.Group controlId="name">
             <Form.Label>Name</Form.Label>
             <Form.Control
@@ -97,7 +98,7 @@ const navigate = useNavigate();
           <br />
           <Row>
             <Col>
-              Have an account ?{" "}
+              Already have an account ?{" "}
               <Link
                 to={"/login"}
               >

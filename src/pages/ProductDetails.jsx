@@ -58,6 +58,9 @@ const addToCartHandler = () =>{
                 width={"400px"}
                 fluid
                 effect="blur"
+                style={{'@media (max-width:900px)':{
+                  width:'200px'
+                }}}
               />
             </Col>
             <Col md={6}>
