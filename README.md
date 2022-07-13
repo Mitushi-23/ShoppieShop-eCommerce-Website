@@ -50,7 +50,7 @@
   - The user is then asked to enter the address and the payment he wish to use.
   <img width="455" alt="address" src="https://user-images.githubusercontent.com/83106116/178813159-2c03a5f5-e3c7-478c-942f-36e289ee1db2.png"> <img width="470" alt="paymentmethod" src="https://user-images.githubusercontent.com/83106116/178813235-e92f0889-85da-4231-912d-1917f0c37e6a.png">
 
-7. Place Order
+6. Place Order
   - when the user selects the payment option and clicks continue, he/she is then directed to order page where the order can be placed.
   <img width="852" alt="placeorder" src="https://user-images.githubusercontent.com/83106116/178815330-287a7873-8f48-4c3d-bd5b-9a7380072476.png">
   
@@ -62,18 +62,18 @@
   
   - Now user can relax and wait for the item to be delivered.
   
-8. Profile Page
+7. Profile Page
   - The navbar has a dropdown on User's name from where user can click on profile button to update his/her profile.
   - User can also add image to look profile attractive.
   <img width="852" alt="profile" src="https://user-images.githubusercontent.com/83106116/178816312-16365d52-0275-4fcc-8ba8-4dfc1cf64279.png">
   
-9. My Orders Page
+8. My Orders Page
   - The navbar has a dropdown on User's name from where user can click on my order button to view order details.
   - Here user can view his/her orders which are placed or pending to be placed.
   - This page contains all the details about the product and the payment done.
   <img width="852" alt="myorders" src="https://user-images.githubusercontent.com/83106116/178816772-47286e11-afa3-4d22-bb19-c30d9ffd5ba6.png">
   
-10. Logout
+9. Logout
    - The navbar has a dropdown on User's name from where user can click on logout button which directs the user back to the login page.
 
 Also the website has a favicon icon to enhance its UI and increase its authenticity.
