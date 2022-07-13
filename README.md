@@ -90,7 +90,7 @@ Also the website has a favicon icon to enhance its UI and increase its authentic
 <a href="https://bootswatch.com/" target="_blank"> <img src="https://camo.githubusercontent.com/51da0973891f15de1404fe9e17951136a420dafec4f9bbfa883e6283623c9317/68747470733a2f2f626f6f747377617463682e636f6d2f5f6173736574732f696d672f6c6f676f2d6461726b2e737667" alt="bootswatch" width="40" height="40"/> </a> 
 <a href="https://www.figma.com/" target="_blank"> <img src="https://www.vectorlogo.zone/logos/figma/figma-icon.svg" alt="figma" width="40" height="40"/> </a>
 <a href="https://mui.com/material-ui/getting-started/overview/" target="_blank"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Logo_material_design.svg/512px-Logo_material_design.svg.png?20200304070251" alt="materialui" width="40" height="40"/> </a>
-<a href="https://www.paypal.com/in/home" target="_blank"> <img src="https://img.favpng.com/23/1/16/logo-paypal-x-com-image-brand-png-favpng-W8rZ0i6YCFWBRzeeqxHVrh465.jpg" alt="paypal" width="40" height="40"/> </a>
+<a href="https://www.paypal.com/in/home" target="_blank"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/124px-PayPal.svg.png?20210313113929" alt="paypal" width="80" height="40"/> </a>
 </p>
 
 - Node.js
