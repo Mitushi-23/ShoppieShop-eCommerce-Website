@@ -15,6 +15,7 @@
     <img width="857" alt="register" src="https://user-images.githubusercontent.com/83106116/178805793-80ccfe92-4447-4870-8193-0986e1f5f86a.png">
 
     - When password and confirm password are not same or the email id already exist, it will display an error message.
+    
      <img width="464" alt="differentPassword" src="https://user-images.githubusercontent.com/83106116/178804402-837c765d-dfdf-4615-aa87-fc6fb7961a84.png">  <img width="455" alt="mailexist" src="https://user-images.githubusercontent.com/83106116/178805226-f8529bb0-1a81-45ad-acc3-75a90183c79d.png">
      
 2. Login Page
