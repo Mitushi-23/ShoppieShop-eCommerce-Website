@@ -106,10 +106,6 @@ Also the website has a favicon icon to enhance its UI and increase its authentic
 - Bootswatch
 - Paypal
 
-## Points to remember while testing the app
-
-1.While payment if payment gateway is not shown then revisit that page from my orders.
-
 ## Getting Started
 
 ## Required Environment Variables
