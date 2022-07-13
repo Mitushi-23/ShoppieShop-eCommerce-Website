@@ -15,6 +15,7 @@
     <img width="857" alt="register" src="https://user-images.githubusercontent.com/83106116/178805793-80ccfe92-4447-4870-8193-0986e1f5f86a.png">
 
     - When password and confirm password are not same or the email id already exist, it will display an error message.
+    
      <img width="464" alt="differentPassword" src="https://user-images.githubusercontent.com/83106116/178804402-837c765d-dfdf-4615-aa87-fc6fb7961a84.png">  <img width="455" alt="mailexist" src="https://user-images.githubusercontent.com/83106116/178805226-f8529bb0-1a81-45ad-acc3-75a90183c79d.png">
      
 2. Login Page
@@ -22,6 +23,7 @@
     <img width="852" alt="login" src="https://user-images.githubusercontent.com/83106116/178806892-b181f84b-d663-44b7-a314-0b3c031fdc4d.png">
    
    - If the user enters an incorrect password or tries to login by entering an unregisterted email id, it will display an error message.
+   - 
     <img width="474" alt="invalidemail" src="https://user-images.githubusercontent.com/83106116/178806294-de9168f6-f50e-4f06-8924-47f91bc26a37.png"> <img width="400" alt="invalidemail" src="https://user-images.githubusercontent.com/83106116/178807183-d6fa49aa-277c-4ce8-818c-e74196251084.png">
     
     - When the user enters valid email id and password, he/she will be allowed to add items to cart and buy them successfully. 
@@ -48,7 +50,7 @@
   - The user is then asked to enter the address and the payment he wish to use.
   <img width="455" alt="address" src="https://user-images.githubusercontent.com/83106116/178813159-2c03a5f5-e3c7-478c-942f-36e289ee1db2.png"> <img width="470" alt="paymentmethod" src="https://user-images.githubusercontent.com/83106116/178813235-e92f0889-85da-4231-912d-1917f0c37e6a.png">
 
-7. Place Order
+6. Place Order
   - when the user selects the payment option and clicks continue, he/she is then directed to order page where the order can be placed.
   <img width="852" alt="placeorder" src="https://user-images.githubusercontent.com/83106116/178815330-287a7873-8f48-4c3d-bd5b-9a7380072476.png">
   
@@ -60,18 +62,18 @@
   
   - Now user can relax and wait for the item to be delivered.
   
-8. Profile Page
+7. Profile Page
   - The navbar has a dropdown on User's name from where user can click on profile button to update his/her profile.
   - User can also add image to look profile attractive.
   <img width="852" alt="profile" src="https://user-images.githubusercontent.com/83106116/178816312-16365d52-0275-4fcc-8ba8-4dfc1cf64279.png">
   
-9. My Orders Page
+8. My Orders Page
   - The navbar has a dropdown on User's name from where user can click on my order button to view order details.
   - Here user can view his/her orders which are placed or pending to be placed.
   - This page contains all the details about the product and the payment done.
   <img width="852" alt="myorders" src="https://user-images.githubusercontent.com/83106116/178816772-47286e11-afa3-4d22-bb19-c30d9ffd5ba6.png">
   
-10. Logout
+9. Logout
    - The navbar has a dropdown on User's name from where user can click on logout button which directs the user back to the login page.
 
 Also the website has a favicon icon to enhance its UI and increase its authenticity.
@@ -103,10 +105,6 @@ Also the website has a favicon icon to enhance its UI and increase its authentic
 - Figma
 - Bootswatch
 - Paypal
-
-## Points to remember while testing the app
-
-1.While payment if payment gateway is not shown then revisit that page from my orders.
 
 ## Getting Started
 
@@ -150,6 +148,6 @@ Open [http://localhost:8080](http://localhost:8080) to view it in the browser. P
 
 Feel free to contact me on [LinkedIn](https://www.linkedin.com/in/mishthi-singhal-97a688201/) 
 
-[![Instagram](https://img.shields.io/badge/Instagram-follow-purple.svg?logo=instagram&logoColor=white)](https://www.instagram.com/mitushi_agrawal_/) [![Twitter](https://img.shields.io/badge/Twitter-follow-blue.svg?logo=twitter&logoColor=white)]([https://twitter.com/mishthi_singhal](https://twitter.com/mitushi_agrawal))
+[![Instagram](https://img.shields.io/badge/Instagram-follow-purple.svg?logo=instagram&logoColor=white)](https://www.instagram.com/mitushi_agrawal_/) [![Twitter](https://img.shields.io/badge/Twitter-follow-blue.svg?logo=twitter&logoColor=white)](https://twitter.com/mitushi_agrawal)
 
 ---------
