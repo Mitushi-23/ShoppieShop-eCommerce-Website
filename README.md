@@ -23,6 +23,7 @@
     <img width="852" alt="login" src="https://user-images.githubusercontent.com/83106116/178806892-b181f84b-d663-44b7-a314-0b3c031fdc4d.png">
    
    - If the user enters an incorrect password or tries to login by entering an unregisterted email id, it will display an error message.
+   - 
     <img width="474" alt="invalidemail" src="https://user-images.githubusercontent.com/83106116/178806294-de9168f6-f50e-4f06-8924-47f91bc26a37.png"> <img width="400" alt="invalidemail" src="https://user-images.githubusercontent.com/83106116/178807183-d6fa49aa-277c-4ce8-818c-e74196251084.png">
     
     - When the user enters valid email id and password, he/she will be allowed to add items to cart and buy them successfully. 
