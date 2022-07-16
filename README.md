@@ -146,7 +146,7 @@ Open [http://localhost:8080](http://localhost:8080) to view it in the browser. P
 
 ## Need help?
 
-Feel free to contact me on [LinkedIn](https://www.linkedin.com/in/mishthi-singhal-97a688201/) 
+Feel free to contact me on [LinkedIn](https://www.linkedin.com/in/mitushi-agrawal-bb75b0210/) 
 
 [![Instagram](https://img.shields.io/badge/Instagram-follow-purple.svg?logo=instagram&logoColor=white)](https://www.instagram.com/mitushi_agrawal_/) [![Twitter](https://img.shields.io/badge/Twitter-follow-blue.svg?logo=twitter&logoColor=white)](https://twitter.com/mitushi_agrawal)
 
