@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const {errorHandler} = require ('./middlewares/errorMiddleware'); 
 const dotenv = require('dotenv');
 const Products = require('./data/products')
@@ -11,6 +12,7 @@ dotenv.config();
 connectDb();
 const app = express()
 app.use(express.json()); 
+app.use(cors());
 
 app.use("/api", productRoutes);
 app.use("/api/users", userRoutes);
